@@ -1,0 +1,118 @@
+Script started on Thu Aug 27 22:57:31 2026
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+[?1034hbash-3.2$ pwd
+/Users/simon/documents/curso-E520/tareas
+bash-3.2$ cd
+bash-3.2$ pwd
+/Users/simon
+bash-3.2$ whoami
+simon
+bash-3.2$ cd /home/user/Desktop
+bash: cd: /home/user/Desktop: No such file or directory
+bash-3.2$ cd /hp[Kome/user.[K/escritorio
+bash: cd: /home/user/escritorio: No such file or directory
+bash-3.2$ pwd
+/Users/simon
+bash-3.2$ mkdir /tmp/tutorial
+mkdir: /tmp/tutorial: File exists
+bash-3.2$ cd mkdir /tmp/tutorial[C[1P /tmp/tutorial[1P /tmp/tutorial[1P /tmp/tutorial[C[C[C[C[C[C[C[C[C[C[C[C[1P /tmp/tutorial[C[C[C[C[C[C[C[C[C[C[C[1P /tmp/tutorial[C[C[C[C[C[C[C[C[C[Cc /tmp/tutorial[C[C[C[C[C[C[C[C[C[C[Cd /tmp/tutorial[C[C[C[C[C[C[C[C[C[C[C[C[C /tmp/tutorial[1P/tmp/tutorial[C[C[C[C[C[C[C[C[C[C[C[C
+bash-3.2$ pwd
+/tmp/tutorial
+bash-3.2$ mkdir dir1 dr[Kir [K2 dir3
+bash-3.2$ mkdir --hg[Kelp
+mkdir: illegal option -- -
+usage: mkdir [-pv] [-m mode] directory_name ...
+bash-3.2$ ls
+dir1	dir2	dir3
+bash-3.2$ cd[K[Kmkdir -p dir4/dir5/dir6
+bash-3.2$ cd dir4
+bash-3.2$ ls
+dir5
+bash-3.2$ cd dir5
+bash-3.2$ ls
+dir6
+bash-3.2$ cd ../..
+bash-3.2$ pwd
+/tmp/tutorial
+bash-3.2$ mkdir --parents --verbose dir4/dir5
+mkdir: illegal option -- -
+usage: mkdir [-pv] [-m mode] directory_name ...
+bash-3.2$ mkdir -p --verbose dir4/dir5
+mkdir: illegal option -- -
+usage: mkdir [-pv] [-m mode] directory_name ...
+bash-3.2$ mkdir another folder
+bash-3.2$ ls
+another	dir1	dir2	dir3	dir4	folder
+bash-3.2$ mkdir "goldfre[K[K[K[K[K[K[Kfolder 1"
+bash-3.2$ mkdir 'folder 2'
+bash-3.2$ mkl[Kdir "folder 4" "folder 5"
+bash-3.2$ mkdir -p "folder 6" "folder7" 7"
+bash-3.2$ ls
+another		dir3		folder 1	folder 5
+dir1		dir4		folder 2	folder 6
+dir2		folder		folder 4	folder 7
+bash-3.2$ ls .[K?[K> output.txt
+bash-3.2$ cat out[ut[K[K[Kput.txt
+another
+dir1
+dir2
+dir3
+dir4
+folder
+folder 1
+folder 2
+folder 4
+folder 5
+folder 6
+folder 7
+output.txt
+bash-3.2$ cat
+hello
+hello
+quit
+quit
+plae  ease close this app!
+please close this app!
+cat
+cat
+^C
+^C
+echo "this is a test"
+echo "this is a test"
+echo "this os      s is a test" > test_1.txt
+echo "this is a test" > test_1.txt
+echo "thio s os a      is a seo cond test" > test_2.txt
+echo "this is a second test" > test_2.txt
+echo "thios  s is a thoi  ird test" > test_3.txt
+echo "this is a third test" > test_3.txt
+ls
+ls
+ls  cat test_1.txt test_2.txt test_3.txt
+cat test_1.txt test_2.txt test_3.txt
+cat test_?.txt
+cat test_?.txt
+cat test_*
+cat test_*
+cat t* > combined.txt
+cat t* > combined.txt
+cat combined.txt
+cat combined.txt
+ls
+ls
+^Dbash-3.2$ ls
+another		dir3		folder 1	folder 5	output.txt
+dir1		dir4		folder 2	folder 6
+dir2		folder		folder 4	folder 7
+bash-3.2$ ls dir1
+bash-3.2$ mv combined.txt dir1
+mv: rename combined.txt to dir1/combined.txt: No such file or directory
+bash-3.2$ ls dir1
+bash-3.2$ mvsi[K[Kdir [K1/*
+bash: mvdir1/*: No such file or directory
+bash-3.2$ exit
+exit
+
+Script done on Thu Aug 27 23:14:52 2026
