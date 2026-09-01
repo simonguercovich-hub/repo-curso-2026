@@ -1,0 +1,798 @@
+Script started on Tue Sep  1 02:58:00 2026
+R version 4.3.2 (2023-10-31) -- "Eye Holes"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> # tarea 02 - introduccion a r
+> # practica w3schools
+> 
+> # --------------------------------------------------
+> # TYPES
+> # --------------------------------------------------
+> 
+> # data types
+> x <- 10.5
+> class(x)
+[1] "numeric"
+> 
+> x <- 1000L
+> class(x)
+[1] "integer"
+> 
+> x <- 9i + 3
+> class(x)
+[1] "complex"
+> 
+> x <- "R is exciting"
+> class(x)
+[1] "character"
+> 
+> x <- TRUE
+> class(x)
+[1] "logical"
+> 
+> # numbers y conversion
+> x <- 10.5
+> y <- 10L
+> z <- 1i
+> 
+> x
+[1] 10.5
+> y
+[1] 10
+> z
+[1] 0+1i
+> 
+> x <- 1L
+> y <- 2
+> 
+> a <- as.numeric(x)
+> b <- as.integer(y)
+> 
+> x
+[1] 1
+> class(x)
+[1] "integer"
+> a
+[1] 1
+> class(a)
+[1] "numeric"
+> 
+> y
+[1] 2
+> class(y)
+[1] "numeric"
+> b
+[1] 2
+> class(b)
+[1] "integer"
+> 
+> # strings
+> "hello"
+[1] "hello"
+> 'hello'
+[1] "hello"
+> 
+> str <- "Hello"
+> str
+[1] "Hello"
+> 
+> str <- "Lorem ipsum dolor sit amet,
++ consectetur adipiscing elit,
++ sed do eiusmod tempor incididunt
++ ut labore et dolore magna aliqua."
+> str
+[1] "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit,\nsed do eiusmod tempor incididunt\nut labore et dolore magna aliqua."
+> cat(str)
+Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.
+> 
+> str <- "Hello World!"
+> nchar(str)
+[1] 12
+> 
+> grepl("H", str)
+[1] TRUE
+> grepl("Hello", str)
+[1] TRUE
+> grepl("X", str)
+[1] FALSE
+> 
+> str1 <- "Hello"
+> str2 <- "World"
+> paste(str1, str2)
+[1] "Hello World"
+> 
+> str <- "We are the so-called \"Vikings\", from the north."
+> str
+[1] "We are the so-called \"Vikings\", from the north."
+> cat(str)
+We are the so-called "Vikings", from the north.
+> 
+> # booleans
+> 10 > 9
+[1] TRUE
+> 10 == 9
+[1] FALSE
+> 10 < 9
+[1] FALSE
+> 
+> a <- 10
+> b <- 9
+> a > b
+[1] TRUE
+> 
+> if (b > a) {
++   print("b is greater than a")
++ } else {
++   print("b is not greater than a")
++ }
+[1] "b is not greater than a"
+> 
+> # operators
+> 10 + 5
+[1] 15
+> 10 - 5
+[1] 5
+> 10 * 5
+[1] 50
+> 10 / 5
+[1] 2
+> 10 ^ 5
+[1] 100000
+> 10 %% 3
+[1] 1
+> 10 %/% 3
+[1] 3
+> 
+> my_var <- 3
+> my_var <<- 3
+> 3 -> my_var
+> 3 ->> my_var
+> my_var = 3
+> 
+> 10 == 5
+[1] FALSE
+> 10 != 5
+[1] TRUE
+> 10 > 5
+[1] TRUE
+> 10 < 5
+[1] FALSE
+> 10 >= 5
+[1] TRUE
+> 10 <= 5
+[1] FALSE
+> 
+> v <- c(TRUE, TRUE, FALSE)
+> t <- c(FALSE, TRUE, FALSE)
+> v & t
+[1] FALSE  TRUE FALSE
+> v | t
+[1]  TRUE  TRUE FALSE
+> !v
+[1] FALSE FALSE  TRUE
+> v && t
+[1] FALSE
+> v || t
+[1] TRUE
+> 
+> x <- 1:10
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10
+> 1:10 %in% c(1, 3, 5)
+ [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+> 
+> mat1 <- matrix(c(1, 2, 3, 4), nrow = 2)
+> mat2 <- matrix(c(5, 6, 7, 8), nrow = 2)
+> mat1 %*% mat2
+     [,1] [,2]
+[1,]   19   43
+[2,]   22   50
+> 
+> # --------------------------------------------------
+> # CONDITIONALS Y FLOW CONTROL
+> # --------------------------------------------------
+> 
+> # if else
+> a <- 33
+> b <- 200
+> if (b > a) {
++   print("b is greater than a")
++ }
+[1] "b is greater than a"
+> 
+> a <- 33
+> b <- 33
+> if (b > a) {
++   print("b is greater than a")
++ } else if (a == b) {
++   print("a and b are equal")
++ }
+[1] "a and b are equal"
+> 
+> a <- 200
+> b <- 33
+> if (b > a) {
++   print("b is greater than a")
++ } else if (a == b) {
++   print("a and b are equal")
++ } else {
++   print("a is greater than b")
++ }
+[1] "a is greater than b"
+> 
+> x <- 41
+> if (x > 10) {
++   print("Above ten,")
++   if (x > 20) {
++     print("and also above 20!")
++   } else {
++     print("but not above 20.")
++   }
++ } else {
++   print("below 10.")
++ }
+[1] "Above ten,"
+[1] "and also above 20!"
+> 
+> a <- 200
+> b <- 33
+> c <- 500
+> if (a > b && c > a) {
++   print("Both conditions are true")
++ }
+[1] "Both conditions are true"
+> 
+> a <- 200
+> b <- 33
+> c <- 500
+> if (a > b || a > c) {
++   print("At least one of the conditions is true")
++ }
+[1] "At least one of the conditions is true"
+> 
+> # while loop
+> i <- 1
+> while (i < 6) {
++   print(i)
++   i <- i + 1
++ }
+[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+> 
+> i <- 1
+> while (i < 6) {
++   print(i)
++   i <- i + 1
++   if (i == 4) {
++     break
++   }
++ }
+[1] 1
+[1] 2
+[1] 3
+> 
+> i <- 0
+> while (i < 6) {
++   i <- i + 1
++   if (i == 3) {
++     next
++   }
++   print(i)
++ }
+[1] 1
+[1] 2
+[1] 4
+[1] 5
+[1] 6
+> 
+> # for loop
+> for (x in 1:10) {
++   print(x)
++ }
+[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+[1] 6
+[1] 7
+[1] 8
+[1] 9
+[1] 10
+> 
+> fruits <- list("apple", "banana", "cherry")
+> for (x in fruits) {
++   print(x)
++ }
+[1] "apple"
+[1] "banana"
+[1] "cherry"
+> 
+> dice <- c(1, 2, 3, 4, 5, 6)
+> for (x in dice) {
++   print(x)
++ }
+[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+[1] 6
+> 
+> fruits <- list("apple", "banana", "cherry")
+> for (x in fruits) {
++   if (x == "cherry") {
++     break
++   }
++   print(x)
++ }
+[1] "apple"
+[1] "banana"
+> 
+> fruits <- list("apple", "banana", "cherry")
+> for (x in fruits) {
++   if (x == "banana") {
++     next
++   }
++   print(x)
++ }
+[1] "apple"
+[1] "cherry"
+> 
+> adj <- list("red", "big", "tasty")
+> fruits <- list("apple", "banana", "cherry")
+> for (x in adj) {
++   for (y in fruits) {
++     print(paste(x, y))
++   }
++ }
+[1] "red apple"
+[1] "red banana"
+[1] "red cherry"
+[1] "big apple"
+[1] "big banana"
+[1] "big cherry"
+[1] "tasty apple"
+[1] "tasty banana"
+[1] "tasty cherry"
+> 
+> # --------------------------------------------------
+> # DATA STRUCTURES
+> # --------------------------------------------------
+> 
+> # vectors
+> fruits <- c("banana", "apple", "orange")
+> fruits
+[1] "banana" "apple"  "orange"
+> 
+> numbers <- c(1, 2, 3)
+> numbers
+[1] 1 2 3
+> 
+> numbers <- 1:10
+> numbers
+ [1]  1  2  3  4  5  6  7  8  9 10
+> 
+> numbers1 <- 1.5:6.5
+> numbers1
+[1] 1.5 2.5 3.5 4.5 5.5 6.5
+> 
+> fruits <- c("banana", "apple", "orange")
+> length(fruits)
+[1] 3
+> 
+> fruits <- c("banana", "apple", "orange", "mango", "lemon")
+> numbers <- c(10, 8, 2, 5, 6, 4)
+> sort(fruits)
+[1] "apple"  "banana" "lemon"  "mango"  "orange"
+> sort(numbers)
+[1]  2  4  5  6  8 10
+> 
+> fruits <- c("banana", "apple", "orange")
+> fruits[1]
+[1] "banana"
+> fruits[c(1, 3)]
+[1] "banana" "orange"
+> fruits[c(-1)]
+[1] "apple"  "orange"
+> 
+> fruits <- c("banana", "apple", "orange", "mango", "lemon")
+> fruits[1] <- "pear"
+> fruits
+[1] "pear"   "apple"  "orange" "mango"  "lemon" 
+> 
+> repeat_each <- rep(c(1, 2, 3), each = 3)
+> repeat_each
+[1] 1 1 1 2 2 2 3 3 3
+> 
+> repeat_times <- rep(c(1, 2, 3), times = 3)
+> repeat_times
+[1] 1 2 3 1 2 3 1 2 3
+> 
+> repeat_indepent <- rep(c(1, 2, 3), times = c(5, 2, 1))
+> repeat_indepent
+[1] 1 1 1 1 1 2 2 3
+> 
+> numbers <- seq(from = 0, to = 100, by = 20)
+> numbers
+[1]   0  20  40  60  80 100
+> 
+> # lists
+> thislist <- list("apple", "banana", "cherry")
+> thislist
+[[1]]
+[1] "apple"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "cherry"
+
+> thislist <- list("apple", "banana", "cherry")
+> thislist[1]
+[[1]]
+[1] "apple"
+
+> thislist <- list("apple", "banana", "cherry")
+> thislist[1] <- "blackcurrant"
+> thislist
+[[1]]
+[1] "blackcurrant"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "cherry"
+
+> thislist <- list("apple", "banana", "cherry")
+> length(thislist)
+[1] 3
+> 
+> thislist <- list("apple", "banana", "cherry")
+> "apple" %in% thislist
+[1] TRUE
+> 
+> thislist <- list("apple", "banana", "cherry")
+> append(thislist, "orange")
+[[1]]
+[1] "apple"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "cherry"
+
+[[4]]
+[1] "orange"
+
+> append(thislist, "orange", after = 2)
+[[1]]
+[1] "apple"
+
+[[2]]
+[1] "banana"
+
+[[3]]
+[1] "orange"
+
+[[4]]
+[1] "cherry"
+
+> thislist <- list("apple", "banana", "cherry")
+> newlist <- thislist[-1]
+> newlist
+[[1]]
+[1] "banana"
+
+[[2]]
+[1] "cherry"
+
+> thislist <- list("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+> (thislist)[2:5]
+[[1]]
+[1] "banana"
+
+[[2]]
+[1] "cherry"
+
+[[3]]
+[1] "orange"
+
+[[4]]
+[1] "kiwi"
+
+> list1 <- list("a", "b", "c")
+> list2 <- list(1, 2, 3)
+> list3 <- c(list1, list2)
+> list3
+[[1]]
+[1] "a"
+
+[[2]]
+[1] "b"
+
+[[3]]
+[1] "c"
+
+[[4]]
+[1] 1
+
+[[5]]
+[1] 2
+
+[[6]]
+[1] 3
+
+> # matrices
+> thismatrix <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 3, ncol = 2)
+> thismatrix
+     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+> 
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> thismatrix
+     [,1]     [,2]    
+[1,] "apple"  "cherry"
+[2,] "banana" "orange"
+> 
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> thismatrix[1, 2]
+[1] "cherry"
+> thismatrix[2, ]
+[1] "banana" "orange"
+> thismatrix[, 2]
+[1] "cherry" "orange"
+> thismatrix[c(1, 2), ]
+     [,1]     [,2]    
+[1,] "apple"  "cherry"
+[2,] "banana" "orange"
+> thismatrix[, c(1, 2)]
+     [,1]     [,2]    
+[1,] "apple"  "cherry"
+[2,] "banana" "orange"
+> 
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> newmatrix <- cbind(thismatrix, c("strawberry", "blueberry"))
+> newmatrix
+     [,1]     [,2]     [,3]        
+[1,] "apple"  "cherry" "strawberry"
+[2,] "banana" "orange" "blueberry" 
+> 
+> newmatrix <- rbind(thismatrix, c("strawberry", "blueberry"))
+> newmatrix
+     [,1]         [,2]       
+[1,] "apple"      "cherry"   
+[2,] "banana"     "orange"   
+[3,] "strawberry" "blueberry"
+> 
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange", "grape", "pineapple"), nrow = 3, ncol = 2)
+> thismatrix <- thismatrix[-c(1), -c(1)]
+> thismatrix
+[1] "orange"    "grape"     "pineapple"
+> 
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> "apple" %in% thismatrix
+[1] TRUE
+> 
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> dim(thismatrix)
+[1] 2 2
+> 
+> thismatrix <- matrix(c("apple", "banana", "cherry", "orange"), nrow = 2, ncol = 2)
+> length(thismatrix)
+[1] 4
+> 
+> Matrix1 <- matrix(c("apple", "banana", "cherry", "grape"), nrow = 2, ncol = 2)
+> Matrix2 <- matrix(c("orange", "mango", "pineapple", "watermelon"), nrow = 2, ncol = 2)
+> 
+> Matrix_Combined <- rbind(Matrix1, Matrix2)
+> Matrix_Combined
+     [,1]     [,2]        
+[1,] "apple"  "cherry"    
+[2,] "banana" "grape"     
+[3,] "orange" "pineapple" 
+[4,] "mango"  "watermelon"
+> 
+> Matrix_Combined <- cbind(Matrix1, Matrix2)
+> Matrix_Combined
+     [,1]     [,2]     [,3]     [,4]        
+[1,] "apple"  "cherry" "orange" "pineapple" 
+[2,] "banana" "grape"  "mango"  "watermelon"
+> 
+> # arrays
+> thisarray <- array(1:24, dim = c(4, 3, 2))
+> thisarray
+, , 1
+
+     [,1] [,2] [,3]
+[1,]    1    5    9
+[2,]    2    6   10
+[3,]    3    7   11
+[4,]    4    8   12
+
+, , 2
+
+     [,1] [,2] [,3]
+[1,]   13   17   21
+[2,]   14   18   22
+[3,]   15   19   23
+[4,]   16   20   24
+
+> thisarray <- array(1:24, dim = c(4, 3, 2))
+> thisarray[2, 3, 2]
+[1] 22
+> 
+> thisarray <- array(1:24, dim = c(4, 3, 2))
+> thisarray[c(1), , 1]
+[1] 1 5 9
+> 
+> thisarray <- array(1:24, dim = c(4, 3, 2))
+> 2 %in% thisarray
+[1] TRUE
+> 
+> thisarray <- array(1:24, dim = c(4, 3, 2))
+> dim(thisarray)
+[1] 4 3 2
+> 
+> thisarray <- array(1:24, dim = c(4, 3, 2))
+> length(thisarray)
+[1] 24
+> 
+> # data frames
+> Data_Frame <- data.frame(
++   Training = c("Strength", "Stamina", "Other"),
++   Pulse = c(100, 150, 120),
++   Duration = c(60, 30, 45)
++ )
+> Data_Frame
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+> 
+> summary(Data_Frame)
+   Training             Pulse          Duration   
+ Length:3           Min.   :100.0   Min.   :30.0  
+ Class :character   1st Qu.:110.0   1st Qu.:37.5  
+ Mode  :character   Median :120.0   Median :45.0  
+                    Mean   :123.3   Mean   :45.0  
+                    3rd Qu.:135.0   3rd Qu.:52.5  
+                    Max.   :150.0   Max.   :60.0  
+> 
+> Data_Frame[1]
+  Training
+1 Strength
+2  Stamina
+3    Other
+> Data_Frame[["Training"]]
+[1] "Strength" "Stamina"  "Other"   
+> Data_Frame$Training
+[1] "Strength" "Stamina"  "Other"   
+> 
+> New_Row_DF <- rbind(Data_Frame, c("Strength", 110, 55))
+> New_Row_DF
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+4 Strength   110       55
+> 
+> New_Col_DF <- cbind(Data_Frame, Steps = c(1000, 6000, 2000))
+> New_Col_DF
+  Training Pulse Duration Steps
+1 Strength   100       60  1000
+2  Stamina   150       30  6000
+3    Other   120       45  2000
+> 
+> Data_Frame_New <- Data_Frame[-c(1), -c(1)]
+> Data_Frame_New
+  Pulse Duration
+2   150       30
+3   120       45
+> 
+> dim(Data_Frame)
+[1] 3 3
+> ncol(Data_Frame)
+[1] 3
+> nrow(Data_Frame)
+[1] 3
+> length(Data_Frame)
+[1] 3
+> 
+> Data_Frame1 <- data.frame(
++   Training = c("Strength", "Stamina", "Other"),
++   Pulse = c(100, 150, 120),
++   Duration = c(60, 30, 45)
++ )
+> 
+> Data_Frame2 <- data.frame(
++   Training = c("Stamina", "Stamina", "Strength"),
++   Pulse = c(140, 150, 160),
++   Duration = c(30, 30, 20)
++ )
+> 
+> New_Data_Frame <- rbind(Data_Frame1, Data_Frame2)
+> New_Data_Frame
+  Training Pulse Duration
+1 Strength   100       60
+2  Stamina   150       30
+3    Other   120       45
+4  Stamina   140       30
+5  Stamina   150       30
+6 Strength   160       20
+> 
+> Data_Frame3 <- data.frame(
++   Training = c("Strength", "Stamina", "Other"),
++   Pulse = c(100, 150, 120),
++   Duration = c(60, 30, 45)
++ )
+> 
+> Data_Frame4 <- data.frame(
++   Steps = c(3000, 6000, 2000),
++   Calories = c(300, 400, 300)
++ )
+> 
+> New_Data_Frame1 <- cbind(Data_Frame3, Data_Frame4)
+> New_Data_Frame1
+  Training Pulse Duration Steps Calories
+1 Strength   100       60  3000      300
+2  Stamina   150       30  6000      400
+3    Other   120       45  2000      300
+> 
+> # factors
+> music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+> music_genre
+[1] Jazz    Rock    Classic Classic Pop     Jazz    Rock    Jazz   
+Levels: Classic Jazz Pop Rock
+> 
+> levels(music_genre)
+[1] "Classic" "Jazz"    "Pop"     "Rock"   
+> 
+> music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"), levels = c("Classic", "Jazz", "Pop", "Rock", "Other"))
+> levels(music_genre)
+[1] "Classic" "Jazz"    "Pop"     "Rock"    "Other"  
+> 
+> length(music_genre)
+[1] 8
+> 
+> music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"))
+> music_genre[3]
+[1] Classic
+Levels: Classic Jazz Pop Rock
+> 
+> music_genre <- factor(c("Jazz", "Rock", "Classic", "Classic", "Pop", "Jazz", "Rock", "Jazz"), levels = c("Classic", "Jazz", "Pop", "Rock", "Opera"))
+> music_genre[3] <- "Opera"
+> music_genre[3]
+[1] Opera
+Levels: Classic Jazz Pop Rock Opera
+> 
+> q()
+Save workspace image? [y/n/c]: n
+
+Script done on Tue Sep  1 03:00:15 2026
