@@ -1,0 +1,219 @@
+Script started on Mon Sep  7 19:34:50 2026
+]0;~/Documents/curso-E520/tareas/tarea-03[?1034hbash-3.2$ R
+
+R version 4.2.3 (2023-03-15) -- "Shortstop Beagle"
+Copyright (C) 2023 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[?1034h> library(tidyverse)
+── [1mAttaching core tidyverse packages[22m ── tidyverse 2.0.0 ──
+[32m✔[39m [34mdplyr    [39m 1.2.1     [32m✔[39m [34mreadr    [39m 2.2.0
+[32m✔[39m [34mforcats  [39m 1.0.0     [32m✔[39m [34mstringr  [39m 1.5.1
+[32m✔[39m [34mggplot2  [39m 3.4.4     [32m✔[39m [34mtibble   [39m 3.2.1
+[32m✔[39m [34mlubridate[39m 1.9.5     [32m✔[39m [34mtidyr    [39m 1.3.0
+[32m✔[39m [34mpurrr    [39m 1.0.2     
+── [1mConflicts[22m ──────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+[36mℹ[39m Use the conflicted package ([3m[34m<http://conflicted.r-lib.org/>[39m[23m) to force all conflicts to become errors
+[?25h> library(pengun[K[K[K[K[Kalmerpenguins)
+[?25h> library(ggthemes)
+[?25h> glimpse(penguins)
+Rows: 344
+Columns: 8
+$ species           [3m[38;5;246m<fct>[39m[23m Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, Adel…
+$ island            [3m[38;5;246m<fct>[39m[23m Torgersen, Torgersen, Torgersen, Torgersen, Torgerse…
+$ bill_length_mm    [3m[38;5;246m<dbl>[39m[23m 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.1, …
+$ bill_depth_mm     [3m[38;5;246m<dbl>[39m[23m 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.1, …
+$ flipper_length_mm [3m[38;5;246m<int>[39m[23m 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, 186…
+$ body_mass_g       [3m[38;5;246m<int>[39m[23m 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 3475, …
+$ sex               [3m[38;5;246m<fct>[39m[23m male, female, female, NA, female, male, female, male…
+$ year              [3m[38;5;246m<int>[39m[23m 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…
+[?25h> #Ejercicio[K[K[Kcio 1: filas y columnas. 
+> #E;[Kl dataset toene[K[K[K[Kiene 344 filas y 8 columnas.
+> #Ee[Kjercc[Kicio 2: signiic[K[Kficado de bii[Kll_le[K[Kdepth_mm
+> #bill_depth_mm describe la profundd[Kidad del pico del ping uino en milimetros.
+> #Ejercicio 3: sca[K[K[Kgráfico
+> ggplot(data = penguins, aes(x = bill_length_mm, y = bill _depth_mm)) +
++   geom_point()
+[1mWarning message:
+[0m[1m[1m[22mRemoved 2 rows containing missing values
+(`geom_point()`). 
+[0m[?25h> #A ni e[K[K[Kivel global parece haber una re[K[K[K[K[K[K[K[K[K[K[Kaber una relación debil[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[KParece haber una relación de[Kébil.
+> #Ejercicio 4: gráfico  de[K[K[Kespece[Kies vs bill dep[K[K[K[K[Kl_depth_mm
+> ggplot(data = penguins, aes(x = species, y = bill_depth_ mm)) +
++   geom_point()
+[1mWarning message:
+[0m[1m[1m[22mRemoved 2 rows containing missing values
+(`geom_point()`). 
+[0m[?25h> # Al ser species categorica, los puntos se superponen ve rticalmente. Un mejor geom es geom_boxplot().
+> #Ejercicio 5: error en geom_point() y corrección.
+> #Da error porque geom_point reque[Kiere los ejer[Ksx e [K[K[K[K x e y:
+> ggplot(data = penguins, aes(x = bill_length_mm, y = bill _depth_mm)) +
++   geom_point()
+[1mWarning message:
+[0m[1m[1m[22mRemoved 2 rows containing missing values
+(`geom_point()`). 
+[0m[?25h> #eje[K[K[K[K#Ejercicio 6:ar[K[K argumento na.rm
+> #na.rm remueve fal[K[K[Kvalore [Ks faltantes silenciosamente. SE[K[K[KS[K Su def ault es Flas[K[K[KALSE.
+> ggplot(data = penguins, aes(x = bill_length_mm, y = bill _depth_mm)) +
++   geom_point(na.rm = TRUE)
+[?25h> #Ejercicio 7: agregar caption con labs()
+> ggplot(data = penguins, aes(x = bill_length_mm, y = bill _depth_mm)) +
++   geom_point(na.rm = TRUE) +
++   labs(
++     title = "Relacion entre longitud y profundidad del p ico",
++     x = "Longitud del pico (mm)",
++     y = "Profundidad del pico (mm)",
++     caption = "Data come from the palmerpenguins package ."
++   )
+[?25h> #Ejercicio 8: recrear visualizacióny [K[K y nivel de mapeo.
+> ggplot(data = penguins, aes(x = flipper_length_mm, y = b ody_mass_g)) +
++   geom_point(aes(color = bill_depth_mm)) +
++   geom_smooth()
+[1m[22m`geom_smooth()` using method = 'loess' and formula = 'y ~
+x'
+[1mWarning messages:
+[0m[1m1: [1m[22mRemoved 2 rows containing non-finite values
+(`stat_smooth()`). 
+[0m[1m2: [1m[22mRemoved 2 rows containing missing values
+(`geom_point()`). 
+[0m[?25h> #bill_depth_mm debe mapearse al est[K[K[K[K[K[Kcon estética de 'coo[Klor', de be mapearse a nivel LOAL[K[KCAL (dentro de geom_[oint[K[K[K[K[Kpoint), no a niv el globalen g[K[K[K[K[Kl en ggplot(). Si se mapea a nivelgl[K[K gloval[K[K[Kbal, geom_sm ooth() intet[Kntaría ajustar una lin[K[Kínea de tendencias[K seao[K[Kparada  para cada valor continui[Ko de bill_depth_mm en lugar de una  sola línea azul general.#[K [K[K.[A[A[A[A[A[C[C  geom_smooth()[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C#bill_depth_mm debe mapearse con estética de 'color', debbe mapearse a nivel LOCAL (dentro de geom_point), no a niveel global en ggplot(). Si se mapea a nivel global, geom_smoooth() intentaría ajustar una línea de tendencia separada ppara cada valor continuo de bill_depth_mm en lugar de una ssola línea azul general.[A[A[A[A[A[C[C  geom_smooth()[K
+[K
+[K
+[K
+[K
+[K[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+geom_smooth: na.rm = FALSE, orientation = NA, se = TRUE
+stat_smooth: na.rm = FALSE, orientation = NA, se = TRUE
+position_identity 
+[?25h> # - bill_depth_mm debe mapearse al estetico 'color'.
+> # - Debe mapearse a nivel LOCAL (dentro de geom_point),  NO a nivel global en ggplot().
+> #   Si se mapea a nivel global, geom_smooth() intentaria  ajustar una linea de tendencia
+> #   separada para cada valor continuo de bill_depth_mm e n lugar de una sola linea azul general.
+> #Ejercicio 9: Pre[K[K[Kperw[K[K[Kredicción de salida y ejecución.
+> # Prediccion:
+> # Como 'color = island' esta definido en el ggplot() glo bal, se hereda tanto en
+> # geom_point() como en geom_smooth(). Por lo tanto, el g rafico mostrara:
+> # 1. Los puntos coloreados segun cada una de las 3 islas  (Biscoe, Dream, Torgersen).
+> # 2. Tres lineas de tendencia separadas (una por cada is la), sin bandas de error (se = FALSE).
+> 
+> # Ejecucion del codigo:
+> ggplot(
++   data = penguins,
++   mapping = aes(x = flipper_length_mm, y = body_mass_g,  color = island)
++ ) +
++   geom_point() +
++   geom_smooth(se = FALSE)
+[1m[22m`geom_smooth()` using method = 'loess' and formula = 'y ~
+x'
+[1mWarning messages:
+[0m[1m1: [1m[22mRemoved 2 rows containing non-finite values
+(`stat_smooth()`). 
+[0m[1m2: [1m[22mRemoved 2 rows containing missing values
+(`geom_point()`). 
+[0m[?25h> E[K#EJ[Kjercicio 10:comparación de gráficos.[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K comparación de gráficos\[K.
+> # Primer grafico (mapeo global):
+> ggplot(
++   data = penguins,
++   mapping = aes(x = flipper_length_mm, y = body_mass_g)
++ ) +
++   geom_point() +
++   geom_smooth()
+[1m[22m`geom_smooth()` using method = 'loess' and formula = 'y ~
+x'
+[1mWarning messages:
+[0m[1m1: [1m[22mRemoved 2 rows containing non-finite values
+(`stat_smooth()`). 
+[0m[1m2: [1m[22mRemoved 2 rows containing missing values
+(`geom_point()`). 
+[0m[?25h> # Segundo grafico (mapeo local duplicado):
+> ggplot() +
++   geom_point(
++     data = penguins,
++     mapping = aes(x = flipper_length_mm, y = body_mass_g )
++   ) +
++   geom_smooth(
++     data = penguins,
++     mapping = aes(x = flipper_length_mm, y = body_mass_g )
++   )
+[1m[22m`geom_smooth()` using method = 'loess' and formula = 'y ~
+x'
+[1mWarning messages:
+[0m[1m1: [1m[22mRemoved 2 rows containing non-finite values
+(`stat_smooth()`). 
+[0m[1m2: [1m[22mRemoved 2 rows containing missing values
+(`geom_point()`). 
+[0m[?25h> # NO, los dos graficos no se veran diferentes; seran exa ctamente identicos visualmente.
+> # En el primer caso, data y mapping estan definidos a ni vel global en ggplot() y se heredan
+> # por ambos geoms. En el segundo caso, se especifican ex plicitamente de forma local en cada
+> # geom_point() y geom_smooth(). Como ambos usan exactame nte los mismos datos y esteticos,
+> # el resultado grafico final es el mismo (aunque el prim ero sigue la regla DRY - Don't Repeat Yourself).
+> #Ejercicios 1.4.3
+> #Ejercicio 1: Bar[K[K[K[K bar plot con especies en el eje y.
+> ggplot(penguins, aes(y = species)) +
++   geom_bar()
+[?25h> # Al asignar species al estetico y en lugar de x, el gra fico de barras se orienta
+> # de forma horizontal en lugar de vertical. Esto es util  cuando las etiquetas de
+> # las categorias son largas para que no se superpongan e n el eje x.
+> #Eeje[K[K[Kjercicio 2:difere[K[K[K[K[K[K diferencia entre color y fill en geom_bar\ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+> # Grafico con color:
+> ggplot(penguins, aes(x = species)) +
++   geom_bar(color = "red")
+[?25h> 
+> # Grafico con fill:
+> ggplot(penguins, aes(x = species)) +
++   geom_bar(fill = "red")
+[?25h> 
+> # Respuesta:
+> # - 'color' solo modifica el borde o contorno de las bar ras.
+> # - 'fill' modifica el relleno interno de las barras.
+> # Por lo tanto, 'fill' es el estetico mas util para camb iar el color principal de las barras.
+> #Ejercicio 3:  ar[K[K[K[Ka[K argumento bins en geom_hiso[Ktogram()
+> #El argumenot[K[Kto 'bins' define el número total de intérvalo s[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K# El argumento 'bins' define el numero total de interval os (o barras) en los que
+> # se divide el rango de la variable continua. Por defect o en ggplot2 su valor es 30.
+> #Ejercicio 4: histogramas en carat en diamonds y bind[Kwidt h
+> # 1. Un binwidth amplio (0.5): oculta detalles
+> ggplot(diamonds, aes(x = carat)) +
++   geom_histogram(binwidth = 0.5)
+[?25h> 
+> # 2. Un binwidth intermedio (0.1): empieza a mostrar pic os
+> ggplot(diamonds, aes(x = carat)) +
++   geom_histogram(binwidth = 0.1)
+[?25h> 
+> # 3. Un binwidth angosto y revelador (0.01):
+> ggplot(diamonds, aes(x = carat)) +
++   geom_histogram(binwidth = 0.01)
+[?25h> 
+> # Respuesta:
+> # Un binwidth de 0.01 revela el patron mas interesante:  existen picos muy marcados
+> # justo en valores enteros o 'redondos' de quilates (com o 0.3, 0.5, 0.7, 1.0, 1.5, 2.0).
+> # Esto refleja el comportamiento humano del mercado: los  diamantes se cortan para alcanzar
+> # valores comercialmente atractivos justo en o por encim a de esos numeros, con caidas abruptas justo antes.
+> q()
+Save workspace image? [y/n/c]: n
+[?25h]0;~/Documents/curso-E520/tareas/tarea-03bash-3.2$ exit
+exit
+
+Script done on Mon Sep  7 20:20:13 2026
